@@ -16,8 +16,6 @@ namespace DocuSign.Integrations.Client
         #region Attributes
 
         protected Account _account;
-        protected string _integratorKey;
-        protected string _apiRootURL;
 
         #endregion
 
@@ -44,15 +42,13 @@ namespace DocuSign.Integrations.Client
         /// Creates an instance of the docusign client with manual configuration
         /// </summary>
         /// <param name="integratorKey">This is the integrator key that can be found in the management panel</param>
-        /// <param name="apiRootURL">DocuSign API root Address (e.g. "https://demo.docusign.net/restapi/v2")</param>
-        public DocuSignClient(string integratorKey, string apiRootURL)
+        /// <param name="docuSignAddress">DocuSign Address (e.g. "https://demo.docusign.net")</param>
+        /// <param name="webServiceUrl">DocuSign API Address (e.g. "https://demo.docusign.net/restapi/v2")</param>
+        public DocuSignClient(string integratorKey, string docuSignAddress, string webServiceUrl)
         {
-            this._integratorKey = integratorKey;
-            this._apiRootURL = apiRootURL.TrimEnd(new char[] { '/' });
-
-            RestSettings.Instance.IntegratorKey = this._integratorKey;
-            RestSettings.Instance.DocuSignAddress = this._apiRootURL;
-            RestSettings.Instance.WebServiceUrl = this._apiRootURL;
+            RestSettings.Instance.IntegratorKey = integratorKey;
+            RestSettings.Instance.DocuSignAddress = docuSignAddress;
+            RestSettings.Instance.WebServiceUrl = webServiceUrl;
         }
 
         #endregion
@@ -103,7 +99,19 @@ namespace DocuSign.Integrations.Client
         public async Task<TemplateRole[]> RetrieveTemplateRolesAsync(string templateId)
         {
             var template = await RetrieveTemplateDetailsAsync(templateId);
-            return template.TemplateRoles;
+
+            var roles = template.AllRecipients.GroupBy(r => r.roleName)
+                                              .Select(rg => new TemplateRole
+                                              {
+                                                  roleName = rg.Key,
+                                                  tabs = new RoleTabs
+                                                  {
+                                                      textTabs = rg.Where(r => r.tabs != null && r.tabs.textTabs != null)
+                                                                   .SelectMany(r => r.tabs.textTabs.Select(t => new RoleTextTab { tabLabel = t.tabLabel, value = t.value })).ToArray()
+                                                  }
+                                              });
+
+            return roles.ToArray();
         }
 
         /// <summary>
@@ -113,7 +121,7 @@ namespace DocuSign.Integrations.Client
         /// <returns></returns>
         public async Task<Template> RetrieveTemplateDetailsAsync(string templateId)
         {
-            var apiEndPoint = new Uri(this._docuSignAddress, string.Format("restapi/v2/templates/{0}", templateId));
+            var apiEndPoint = string.Format("{0}/templates/{1}", this._account.BaseUrl, templateId);
             var template = await ExecuteRESTRequestAsync<Template>(apiEndPoint, "GET", HttpStatusCode.OK, null);
             return template;
         }
@@ -124,7 +132,7 @@ namespace DocuSign.Integrations.Client
 
         #region Helper Methods
         
-        protected virtual async Task<ResponseType> ExecuteRESTRequestAsync<ResponseType>(Uri apiEndPoint, string httpMethod, HttpStatusCode expectedResponse, object request)
+        protected virtual async Task<ResponseType> ExecuteRESTRequestAsync<ResponseType>(string apiEndPoint, string httpMethod, HttpStatusCode expectedResponse, object request)
         {
             // get template definition
             RequestBuilder builder = new RequestBuilder();
@@ -139,7 +147,7 @@ namespace DocuSign.Integrations.Client
             req.DistributorCode = RestSettings.Instance.DistributorCode;
             req.DistributorPassword = RestSettings.Instance.DistributorPassword;
             req.IntegratorKey = RestSettings.Instance.IntegratorKey;
-            req.Uri = apiEndPoint.ToString();
+            req.Uri = apiEndPoint;
             
             if(request != null)
                 req.RequestBody = new RequestBody[] { new RequestBody { Text = JsonConvert.SerializeObject(request) } };
