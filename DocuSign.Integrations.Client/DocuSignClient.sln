@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocuSignClientUnitTests", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6BF1AD6D-3653-42E3-9002-BB5E89D1FD5F}"
 	ProjectSection(SolutionItems) = preProject
-		Configuration README.txt = Configuration README.txt
 		DocuSignClient.vsmdi = DocuSignClient.vsmdi
 		Local.testsettings = Local.testsettings
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
