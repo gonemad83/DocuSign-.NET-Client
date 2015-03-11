@@ -85,7 +85,24 @@ namespace DocuSign.Integrations.Client
 
         #region Envelope Methods
 
-        
+        public async Task<string> CreateEnvelopeFromTemplate(string templateId, TemplateRole[] templateRoles, CustomFields customFields,
+            string status, string subject = null)
+        {
+            var envelope = new EnvelopeCreate();
+            envelope.templateId = templateId;
+            envelope.templateRoles = templateRoles;
+            envelope.customFields = customFields;
+
+            if(!string.IsNullOrEmpty(status))
+                envelope.emailSubject = subject;
+
+            // $TODO: Change statuses to enums as developers shouldn't be expected to go and read rest API documentation to work it out
+            envelope.status = status;
+
+            var apiEndPoint = string.Format("{0}/envelopes", this._account.BaseUrl);
+            var response = await ExecuteRESTRequestAsync<EnvelopeCreateResponse>(apiEndPoint, "POST", HttpStatusCode.Created, envelope);
+            return response.envelopeId;
+        }
 
         #endregion
 
@@ -95,10 +112,12 @@ namespace DocuSign.Integrations.Client
         /// Retrieves the template roles
         /// </summary>
         /// <param name="templateId"></param>
-        /// <returns></returns>
+        /// <returns>Collection of roles and tabs configured in the template</returns>
         public async Task<TemplateRole[]> RetrieveTemplateRolesAsync(string templateId)
         {
             var template = await RetrieveTemplateDetailsAsync(templateId);
+
+            // $TODO: Add support for retrieving preconfigured 
 
             var roles = template.AllRecipients.GroupBy(r => r.roleName)
                                               .Select(rg => new TemplateRole

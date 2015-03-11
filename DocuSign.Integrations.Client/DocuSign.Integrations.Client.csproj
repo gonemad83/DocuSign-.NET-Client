@@ -103,6 +103,7 @@
     <Compile Include="DocuSignEnvelopeInformation.cs" />
     <Compile Include="Envelope.cs" />
     <Compile Include="Envelope.json.cs" />
+    <Compile Include="EnvelopeCreateResponse.cs" />
     <Compile Include="EnvelopeInfoXmlTextReader.cs" />
     <Compile Include="EnvelopeStatus.cs" />
     <Compile Include="Error.json.cs" />
