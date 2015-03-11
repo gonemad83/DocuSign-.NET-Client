@@ -1,4 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿// -----------------------------------------------------------------------
+// <copyright file="DocuSignClient.cs" company="Chris Stokes">
+// Copyright (c) Chris Stokes
+// </copyright>
+// -----------------------------------------------------------------------
+
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +22,7 @@ namespace DocuSign.Integrations.Client
         #region Attributes
 
         protected Account _account;
+        protected Configuration.DocuSignClientConfiguration _config;
 
         #endregion
 
@@ -61,7 +68,9 @@ namespace DocuSign.Integrations.Client
         public async Task LoginAsync()
         {
             // $TODO: Implement configuration
-            throw new NotImplementedException();
+            
+            if(this._config == null)
+                throw new DocuSignClientException("Login credentials must be provided when configuration has not been used");
         }
 
         /// <summary>
@@ -78,8 +87,8 @@ namespace DocuSign.Integrations.Client
 
                 if (!this._account.Login())
                 {
-                    throw new Exception(string.Format("Login API call failed for user {0}.\nError Code:  {1}\nMessage:  {2}", 
-                        this._account.Email, this._account.RestError.errorCode, this._account.RestError.message));
+                    throw new DocuSignClientException("Login API call failed for user {0}.\nError Code:  {1}\nMessage:  {2}", 
+                        this._account.Email, this._account.RestError.errorCode, this._account.RestError.message);
                 }
             });
         }
@@ -188,11 +197,11 @@ namespace DocuSign.Integrations.Client
             {
                 try
                 {
-                    throw new Exception(Error.FromJson(response.ResponseText).message);
+                    throw new DocuSignClientException(Error.FromJson(response.ResponseText).message);
                 }
                 catch
                 {
-                    throw new Exception(response.ResponseText);
+                    throw new DocuSignClientException(response.ResponseText);
                 }
             }
 
