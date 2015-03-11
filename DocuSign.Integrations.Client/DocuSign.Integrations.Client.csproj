@@ -98,6 +98,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="Account.json.cs" />
     <Compile Include="DistributorCredentials.cs" />
+    <Compile Include="DocuSignClient.cs" />
     <Compile Include="DocuSignCredentials.cs" />
     <Compile Include="DocuSignEnvelopeInformation.cs" />
     <Compile Include="Envelope.cs" />

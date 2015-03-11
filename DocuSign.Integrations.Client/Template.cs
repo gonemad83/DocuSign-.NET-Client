@@ -61,7 +61,7 @@ namespace DocuSign.Integrations.Client
             req.IntegratorKey = RestSettings.Instance.IntegratorKey;
             req.IsMultipart = true;
             req.MultipartBoundary = new Guid().ToString();
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             RequestBody rb = new RequestBody();
             rb.Headers.Add("Content-Type", "application/json");
@@ -123,7 +123,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/templates/{1}", this.Login.BaseUrl, templateId);
 
             builder.Request = req;
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             ResponseInfo response = builder.MakeRESTRequest();
             this.Trace(builder, response);
@@ -157,7 +157,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/templates/{1}/documents/{2}/pages/1/page_image", this.Login.BaseUrl, templateId, GetDocIds(templateId)[0]);
 
             builder.Request = req;
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             ResponseInfo response = builder.MakeRESTRequest();
             this.Trace(builder, response);
@@ -191,7 +191,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/templates?order=desc&order_by=used", this.Login.BaseUrl);
 
             builder.Request = req;
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             ResponseInfo response = builder.MakeRESTRequest();
             this.Trace(builder, response);

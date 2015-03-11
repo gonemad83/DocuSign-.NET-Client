@@ -179,7 +179,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/documents/combined?certificate={2}", this.Login.BaseUrl, envelopeId, includeCertificate.ToString().ToLower());
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
 
@@ -228,7 +228,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/documents", this.Login.BaseUrl, envelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -284,7 +284,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/templates", this.Login.BaseUrl, this.EnvelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 var templates = new List<EnvelopeTemplate>();
                 foreach (string templateId in templateIds)
@@ -353,7 +353,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/templates", this.Login.BaseUrl, this.EnvelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
                 
                 RequestBody rb = new RequestBody();
                 JsonSerializerSettings settings = new JsonSerializerSettings();
@@ -411,7 +411,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/templates?include=matching%2Capplied", this.Login.BaseUrl, this.EnvelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -464,7 +464,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/custom_fields.json", this.Login.BaseUrl, this.EnvelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -510,7 +510,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -581,7 +581,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -652,7 +652,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -707,7 +707,7 @@ namespace DocuSign.Integrations.Client
             req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
             RequestBuilder builder = new RequestBuilder();
-            builder.Proxy = Proxy;
+            //builder.Proxy = this.Proxy;
             builder.Request = req;
 
             List<RequestBody> requestBodies = new List<RequestBody>();
@@ -750,7 +750,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -806,7 +806,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -857,7 +857,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -912,7 +912,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -1024,7 +1024,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}", this.Login.BaseUrl, envelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -1106,7 +1106,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/documents", this.Login.BaseUrl, EnvelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -1183,7 +1183,7 @@ namespace DocuSign.Integrations.Client
 
                 req.RequestBody = requestBodies.ToArray();
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -1232,7 +1232,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/envelopes/{1}/recipients", this.Login.BaseUrl, EnvelopeId);
 
             builder.Request = req;
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             ResponseInfo response = builder.MakeRESTRequest();
             this.Trace(builder, response);
@@ -1279,7 +1279,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}/envelopes/{1}/recipients", this.Login.BaseUrl, EnvelopeId);
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -1359,7 +1359,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
                 req.IsMultipart = true;
                 req.MultipartBoundary = new Guid().ToString();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
                 RequestBody rb = new RequestBody();
                 rb.Headers.Add("Content-Type", "application/json");
@@ -1500,7 +1500,7 @@ namespace DocuSign.Integrations.Client
             req.IntegratorKey = RestSettings.Instance.IntegratorKey;
             req.IsMultipart = true;
             req.MultipartBoundary = new Guid().ToString();
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             if (string.IsNullOrWhiteSpace(this.Login.SOBOUserId) == false)
             {
@@ -1575,7 +1575,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 if (string.IsNullOrWhiteSpace(this.Login.SOBOUserId) == false)
@@ -1648,7 +1648,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 if (string.IsNullOrWhiteSpace(this.Login.SOBOUserId) == false)
@@ -1715,7 +1715,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 if (string.IsNullOrWhiteSpace(this.Login.SOBOUserId) == false)
@@ -1784,7 +1784,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder builder = new RequestBuilder();
-                builder.Proxy = Proxy;
+                //builder.Proxy = this.Proxy;
                 builder.Request = req;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
@@ -1861,7 +1861,7 @@ namespace DocuSign.Integrations.Client
             req.IntegratorKey = RestSettings.Instance.IntegratorKey;
             req.IsMultipart = true;
             req.MultipartBoundary = Guid.NewGuid().ToString();
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             RequestBody rb = new RequestBody();
             rb.Text = this.CreateJson(fileNames, index);
@@ -1951,7 +1951,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = "/envelopes/" + EnvelopeId + "/documents/";
             req.HttpMethod = "DELETE";
             req.IntegratorKey = RestSettings.Instance.IntegratorKey;
-            builder.Proxy = this.Proxy;
+            //builder.Proxy = this.Proxy;
 
             RequestBody rb = new RequestBody();
             EnvelopeCreate env = new EnvelopeCreate();
@@ -2055,7 +2055,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
                 req.IsMultipart = true;
                 req.MultipartBoundary = new Guid().ToString();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
 
                 RequestBody rb = new RequestBody();
@@ -2117,7 +2117,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
                 req.IsMultipart = true;
                 req.MultipartBoundary = new Guid().ToString();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
 
                 RequestBody rb = new RequestBody();
@@ -2190,7 +2190,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
                 req.IsMultipart = true;
                 req.MultipartBoundary = new Guid().ToString();
-                builder.Proxy = this.Proxy;
+                //builder.Proxy = this.Proxy;
 
 
                 RequestBody rb = new RequestBody();

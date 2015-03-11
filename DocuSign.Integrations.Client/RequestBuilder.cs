@@ -115,7 +115,7 @@ namespace DocuSign.Integrations.Client
         /// <summary>
         /// Gets or sets the WebProxy for Http requests
         /// </summary>
-        public WebProxy Proxy { get; set; }
+        //public WebProxy Proxy { get; set; }
 
         /// <summary>
         /// Gets the HttpRequest object

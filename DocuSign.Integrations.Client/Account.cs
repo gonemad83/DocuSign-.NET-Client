@@ -111,7 +111,7 @@ namespace DocuSign.Integrations.Client
         /// <summary>
         /// Gets or sets the WebProxy for Http requests
         /// </summary>
-        public WebProxy Proxy { get; set; }
+        //public WebProxy Proxy { get; set; }
 
         /// <summary>
         /// Gets or sets the api error
@@ -223,7 +223,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/users/{1}", this.BaseUrl, this.UserId);
 
             utils.Request = req;
-            utils.Proxy = this.Proxy;
+            //////utils.Proxy = this.Proxy;
 
             ResponseInfo response = utils.MakeRESTRequest();
 
@@ -271,7 +271,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/users/{1}", this.BaseUrl, this.UserId);
 
             utils.Request = req;
-            utils.Proxy = this.Proxy;
+            ////utils.Proxy = this.Proxy;
 
             ResponseInfo response = utils.MakeRESTRequest();
 
@@ -312,7 +312,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}{1}", RestSettings.Instance.WebServiceUrl, method);
 
                 utils.Request = req;
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
                 utils.AuthorizationFormat = RequestBuilder.AuthFormat.Json;
 
                 ResponseInfo response = utils.MakeRESTRequest();
@@ -375,7 +375,7 @@ namespace DocuSign.Integrations.Client
                 }
 
                 utils.Request = req;
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
                 utils.AuthorizationFormat = RequestBuilder.AuthFormat.Json;
 
                 ResponseInfo response = utils.MakeRESTRequest();
@@ -439,7 +439,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder utils = new RequestBuilder();
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
                 RequestBody rb = new RequestBody();
@@ -502,7 +502,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/login_information", url);
 
             utils.Request = req;
-            utils.Proxy = this.Proxy;
+            ////utils.Proxy = this.Proxy;
 
             ResponseInfo response = utils.MakeRESTRequest();
 
@@ -547,7 +547,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/login_information", url);
 
             utils.Request = req;
-            utils.Proxy = this.Proxy;
+            ////utils.Proxy = this.Proxy;
 
             ResponseInfo response = utils.MakeRESTRequest();
 
@@ -641,7 +641,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder utils = new RequestBuilder();
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
                 RequestBody rb = new RequestBody();
@@ -701,7 +701,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder utils = new RequestBuilder();
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
                 RequestBody rb = new RequestBody();
@@ -758,7 +758,7 @@ namespace DocuSign.Integrations.Client
                 req.IntegratorKey = RestSettings.Instance.IntegratorKey;
 
                 RequestBuilder utils = new RequestBuilder();
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
 
                 List<RequestBody> requestBodies = new List<RequestBody>();
                 RequestBody rb = new RequestBody();
@@ -813,7 +813,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}{1}", RestSettings.Instance.WebServiceUrl, "/provisioning.json");
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                ////builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
 
@@ -854,7 +854,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = this.BaseUrl;
 
             utils.Request = req;
-            utils.Proxy = this.Proxy;
+            ////utils.Proxy = this.Proxy;
 
             ResponseInfo response = utils.MakeRESTRequest();
             this.Trace(utils, response);
@@ -890,7 +890,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}{1}", RestSettings.Instance.WebServiceUrl, "/billing_plans.json");
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                ////builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -934,7 +934,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}{1}", RestSettings.Instance.WebServiceUrl, string.Format("/billing_plans/{0}", planId));
 
                 builder.Request = req;
-                builder.Proxy = this.Proxy;
+                ////builder.Proxy = this.Proxy;
 
                 ResponseInfo response = builder.MakeRESTRequest();
                 this.Trace(builder, response);
@@ -983,7 +983,7 @@ namespace DocuSign.Integrations.Client
                 }
 
                 utils.Request = req;
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
 
                 ResponseInfo response = utils.MakeRESTRequest();
                 this.Trace(utils, response);
@@ -1031,7 +1031,7 @@ namespace DocuSign.Integrations.Client
             req.Uri = string.Format("{0}/users/{1}/profile/image", this.BaseUrl, this.UserId);
 
             utils.Request = req;
-            utils.Proxy = this.Proxy;
+            ////utils.Proxy = this.Proxy;
 
             ResponseInfo response = utils.MakeRESTRequest();
             this.Trace(utils, response);
@@ -1077,7 +1077,7 @@ namespace DocuSign.Integrations.Client
                 req.Uri = string.Format("{0}{1}", RestSettings.Instance.WebServiceUrl, "/login_information?api_password=true&include_account_id_guid=true");
 
                 utils.Request = req;
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
 
                 ResponseInfo response = utils.MakeRESTRequest();
                 this.Trace(utils, response);
@@ -1127,7 +1127,7 @@ namespace DocuSign.Integrations.Client
 
                 utils.Request = req;
                 utils.AuthorizationFlag = RequestBuilder.AuthOptions.FullCreds;
-                utils.Proxy = this.Proxy;
+                ////utils.Proxy = this.Proxy;
 
                 ResponseInfo response = utils.MakeRESTRequest();
 
