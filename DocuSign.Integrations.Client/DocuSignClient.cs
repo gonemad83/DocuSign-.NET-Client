@@ -29,12 +29,14 @@ namespace DocuSign.Integrations.Client
         #region Constructors
 
         /// <summary>
-        /// Creates a new instance of the docusign from the default configuration
+        /// Creates a new instance of the docusign from the default configuration ("docuSignClientConfiguration")
         /// </summary>
         public DocuSignClient()
         {
-            // $TODO: Implement configuration
-            throw new NotImplementedException();
+            this._config = Configuration.DocuSignClientConfiguration.GetConfig();
+            RestSettings.Instance.IntegratorKey = this._config.IntegratorKey;
+            RestSettings.Instance.DocuSignAddress = this._config.DocuSignAddress;
+            RestSettings.Instance.WebServiceUrl = this._config.WebServiceUrl;
         }
 
         /// <summary>
@@ -43,8 +45,10 @@ namespace DocuSign.Integrations.Client
         /// <param name="configurationName">Name of the configuration element</param>
         public DocuSignClient(string configurationName)
         {
-            // $TODO: Implement configuration
-            throw new NotImplementedException();
+            this._config = Configuration.DocuSignClientConfiguration.GetConfig(configurationName);
+            RestSettings.Instance.IntegratorKey = this._config.IntegratorKey;
+            RestSettings.Instance.DocuSignAddress = this._config.DocuSignAddress;
+            RestSettings.Instance.WebServiceUrl = this._config.WebServiceUrl;
         }
 
         /// <summary>
@@ -67,10 +71,10 @@ namespace DocuSign.Integrations.Client
         /// </summary>
         public async Task LoginAsync()
         {
-            // $TODO: Implement configuration
-            
             if(this._config == null)
                 throw new DocuSignClientException("Login credentials must be provided when configuration has not been used");
+
+            await LoginAsync(this._config.Email, this._config.Password);
         }
 
         /// <summary>

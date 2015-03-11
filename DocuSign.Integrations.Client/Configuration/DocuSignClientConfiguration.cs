@@ -19,15 +19,15 @@ namespace DocuSign.Integrations.Client.Configuration
     public class DocuSignClientConfiguration : ConfigurationSection
     {
         /// <summary>
-        /// Returns the first found configuration
+        /// Returns the default named configuration which is "docuSignClientConfiguration"
         /// </summary>
         /// <returns></returns>
         public static DocuSignClientConfiguration GetConfig()
         {
-            var config = (DocuSignClientConfiguration)System.Configuration.ConfigurationManager.GetSection("*");
+            var config = (DocuSignClientConfiguration)System.Configuration.ConfigurationManager.GetSection("docuSignClientConfiguration");
 
             if (config == null)
-                throw new ConfigurationException("No DocuSignClientConfiguration element found in config file");
+                throw new ConfigurationErrorsException("No docuSignClientConfiguration element found in config file");
 
             return config;
         }
@@ -42,7 +42,7 @@ namespace DocuSign.Integrations.Client.Configuration
             var config = (DocuSignClientConfiguration)System.Configuration.ConfigurationManager.GetSection(name);
 
             if (config == null)
-                throw new ConfigurationException(string.Format("No DocuSignClientConfiguration element \"{0}\" found in config file", name));
+                throw new ConfigurationErrorsException(string.Format("No DocuSignClientConfiguration element \"{0}\" found in config file", name));
 
             return config;
         }

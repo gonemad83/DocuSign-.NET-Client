@@ -1,12 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocuSignClientUnitTests", "DocuSignClientUnitTests\DocuSignClientUnitTests.csproj", "{F4C0F2AA-BA38-45D5-A908-D6793D427351}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6BF1AD6D-3653-42E3-9002-BB5E89D1FD5F}"
 	ProjectSection(SolutionItems) = preProject
+		Configuration README.txt = Configuration README.txt
 		DocuSignClient.vsmdi = DocuSignClient.vsmdi
 		Local.testsettings = Local.testsettings
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
