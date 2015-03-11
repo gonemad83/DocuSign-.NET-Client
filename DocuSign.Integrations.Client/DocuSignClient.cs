@@ -26,6 +26,7 @@ namespace DocuSign.Integrations.Client
         /// </summary>
         public DocuSignClient()
         {
+            // $TODO: Implement configuration
             throw new NotImplementedException();
         }
 
@@ -35,6 +36,7 @@ namespace DocuSign.Integrations.Client
         /// <param name="configurationName">Name of the configuration element</param>
         public DocuSignClient(string configurationName)
         {
+            // $TODO: Implement configuration
             throw new NotImplementedException();
         }
 
@@ -58,6 +60,7 @@ namespace DocuSign.Integrations.Client
         /// </summary>
         public async Task LoginAsync()
         {
+            // $TODO: Implement configuration
             throw new NotImplementedException();
         }
 
@@ -119,7 +122,9 @@ namespace DocuSign.Integrations.Client
 
             // $TODO: Add support for retrieving preconfigured 
 
-            var roles = template.AllRecipients.GroupBy(r => r.roleName)
+            // need to order by routing order so as to correctly order the template roles
+            var roles = template.AllRecipients.OrderBy(r => r.routingOrder)
+                                              .GroupBy(r => r.roleName)
                                               .Select(rg => new TemplateRole
                                               {
                                                   roleName = rg.Key,
@@ -167,9 +172,13 @@ namespace DocuSign.Integrations.Client
             req.DistributorPassword = RestSettings.Instance.DistributorPassword;
             req.IntegratorKey = RestSettings.Instance.IntegratorKey;
             req.Uri = apiEndPoint;
-            
-            if(request != null)
-                req.RequestBody = new RequestBody[] { new RequestBody { Text = JsonConvert.SerializeObject(request) } };
+
+            if (request != null)
+            {
+                var jSettings = new JsonSerializerSettings();
+                jSettings.NullValueHandling = NullValueHandling.Ignore;
+                req.RequestBody = new RequestBody[] { new RequestBody { Text = JsonConvert.SerializeObject(request, Formatting.Indented, jSettings) } };
+            }
 
             builder.Request = req;
             
