@@ -144,7 +144,7 @@ namespace DocuSign.Integrations.Client
                                                   tabs = new RoleTabs
                                                   {
                                                       textTabs = rg.Where(r => r.tabs != null && r.tabs.textTabs != null)
-                                                                   .SelectMany(r => r.tabs.textTabs.Select(t => new RoleTextTab { tabLabel = t.tabLabel, value = t.value })).ToArray()
+                                                                   .SelectMany(r => r.tabs.textTabs.Select(t => new RoleTextTab { tabId = t.tabId, tabLabel = t.tabLabel, value = t.value })).ToArray()
                                                   }
                                               });
 

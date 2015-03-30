@@ -696,6 +696,7 @@ namespace DocuSign.Integrations.Client
     [Serializable]
     public class RoleTextTab
     {
+        public string tabId { get; set; }
         public string tabLabel { get; set; }
         public string value { get; set; }
     }
